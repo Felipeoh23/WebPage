@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japón | 日本へようこそ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+        
+        .tail-container {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)), 
+                             url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .sakura {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff8fab;
+            border-radius: 50% 0 50% 50%;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(800px) rotate(720deg);
+            }
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-50 text-zinc-800 overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-zinc-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-xl">日</div>
+                <span class="text-3xl font-bold heading-font tracking-tighter">Japón</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="text-zinc-700 hover:text-red-600">Inicio</a>
+                <a href="#" class="text-zinc-700 hover:text-red-600">Descubre</a>
+                <a href="#" class="text-zinc-700 hover:text-red-600">Experiencias</a>
+                <a href="#" class="text-zinc-700 hover:text-red-600">Planifica</a>
+                <a href="#" class="text-zinc-700 hover:text-red-600">Guía</a>
+            </div>
+
+            <button class="text-zinc-700 hover:text-red-600">
+                <i class="fa-regular fa-heart text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-bg h-screen flex items-center relative text-white">
+        <div id="sakura-container" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-sm">
+                    <span class="text-red-300">🇯🇵</span>
+                    <span>JAPÓN</span>
+                </div>
+                
+                <h1 class="text-7xl md:text-8xl font-bold heading-font leading-none tracking-tighter">
+                    Japón
+                </h1>
+                
+                <p class="text-3xl text-red-100">日本へようこそ</p>
+                
+                <div class="max-w-md">
+                    <p class="text-lg text-white/90">
+                        Un país que combina <span class="font-semibold">tradición</span>, 
+                        <span class="font-semibold">naturaleza</span>, <span class="font-semibold">tecnología</span> y 
+                        <span class="font-semibold">espíritu</span>.
+                    </p>
+                </div>
+
+                <button onclick="scrollToDestinos()" 
+                        class="bg-red-600 hover:bg-red-700 transition-colors text-white px-10 py-4 rounded-full font-medium flex items-center gap-3 text-lg">
+                    Japón
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Floating box con el botón Empecemos -->
+            <div class="hidden md:block bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/30 max-w-xs ml-auto">
+                <div class="flex items-center gap-4 text-white">
+                    <div class="w-16 h-16 bg-gradient-to-br from-amber-300 to-red-400 rounded-2xl flex items-center justify-center text-4xl">
+                        👫
+                    </div>
+                    <div>
+                        <p class="text-xl font-medium">¿Lista para la aventura?</p>
+                        <button onclick="goToJapan()" 
+                                class="mt-4 bg-white text-red-600 px-6 py-3 rounded-2xl font-semibold w-full hover:scale-105 transition-transform">
+                            ¡Empecemos!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest mb-2">DESCUBRE MÁS</div>
+            <div class="w-6 h-10 border-2 border-white/70 rounded-full flex items-center justify-center">
+                <div class="w-1 h-3 bg-white rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Destinations -->
+    <section id="destinos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold heading-font text-center mb-4">Lugares que no te puedes perder</h2>
+            <p class="text-center text-zinc-600 mb-12">Explora la magia de Japón</p>
+            
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="card-hover group bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                    <div class="h-56 bg-[url('https://picsum.photos/id/1016/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-1">Tokio</h3>
+                        <p class="text-sm text-zinc-600">La ciudad que nunca deja de sorprender.</p>
+                    </div>
+                </div>
+                <div class="card-hover group bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                    <div class="h-56 bg-[url('https://picsum.photos/id/133/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-1">Kioto</h3>
+                        <p class="text-sm text-zinc-600">Tradición viva en cada esquina.</p>
+                    </div>
+                </div>
+                <div class="card-hover group bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                    <div class="h-56 bg-[url('https://picsum.photos/id/201/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-1">Nara</h3>
+                        <p class="text-sm text-zinc-600">Historia, naturaleza y ciervos sagrados.</p>
+                    </div>
+                </div>
+                <div class="card-hover group bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                    <div class="h-56 bg-[url('https://picsum.photos/id/251/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-1">Osaka</h3>
+                        <p class="text-sm text-zinc-600">Energía, comida y hospitalidad.</p>
+                    </div>
+                </div>
+                <div class="card-hover group bg-white border border-zinc-200 rounded-3xl overflow-hidden">
+                    <div class="h-56 bg-[url('https://picsum.photos/id/1018/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-1">Hokkaido</h3>
+                        <p class="text-sm text-zinc-600">Naturaleza salvaje y paisajes únicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-white/80 py-16">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white text-2xl">日</div>
+                    <span class="text-3xl font-bold heading-font">Japón</span>
+                </div>
+                <p class="text-sm">Explorando la belleza de la Tierra del Sol Naciente.</p>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold mb-4 text-white">Enlaces</h4>
+                <div class="space-y-2 text-sm">
+                    <p>Experiencias únicas</p>
+                    <p>Mejor época para visitar</p>
+                    <p>Sabores que enamoran</p>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold mb-4 text-white">Valores</h4>
+                <div class="space-y-2 text-sm">
+                    <p>Respeta la cultura</p>
+                    <p>Cuida el entorno</p>
+                    <p>Toma fotos, deja recuerdos</p>
+                    <p>Viaja con mente abierta</p>
+                </div>
+            </div>
+            
+            <div class="text-right">
+                <div class="text-sm opacity-75">ありがとう</div>
+                <div class="text-xl font-medium text-red-400">Arigatō</div>
+            </div>
+        </div>
+        
+        <div class="text-center text-xs mt-16 opacity-50">
+            © 2027 Japon nos espera
+        </div>
+    </footer>
+
+    <script>
+        // Sakura animation
+        function createSakura() {
+            const container = document.getElementById('sakura-container');
+            const sakura = document.createElement('div');
+            sakura.className = 'sakura';
+            
+            const leftPos = Math.random() * 100;
+            sakura.style.left = `${leftPos}vw`;
+            sakura.style.animationDuration = `${Math.random() * 8 + 8}s`;
+            sakura.style.opacity = Math.random() * 0.7 + 0.4;
+            sakura.style.width = `${Math.random() * 10 + 8}px`;
+            sakura.style.height = sakura.style.width;
+            
+            container.appendChild(sakura);
+            setTimeout(() => sakura.remove(), 20000);
+        }
+
+        setInterval(() => { if (Math.random() > 0.4) createSakura(); }, 120);
+        for (let i = 0; i < 25; i++) setTimeout(createSakura, i * 60);
+
+        // Función especial solo para el botón "¡Empecemos!"
+        function goToJapan() {
+            const message = document.createElement('div');
+            message.style.position = 'fixed';
+            message.style.top = '50%';
+            message.style.left = '50%';
+            message.style.transform = 'translate(-50%, -50%)';
+            message.style.background = 'linear-gradient(to right, #e63939, #f97316)';
+            message.style.color = 'white';
+            message.style.padding = '30px 50px';
+            message.style.borderRadius = '9999px';
+            message.style.fontSize = '32px';
+            message.style.fontWeight = 'bold';
+            message.style.boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.5)';
+            message.style.zIndex = '10000';
+            message.style.textAlign = 'center';
+            message.innerHTML = '¡Nos vamos a Japón! 🌸';
+            document.body.appendChild(message);
+
+            setTimeout(() => {
+                message.style.transition = 'all 0.8s ease';
+                message.style.opacity = '0';
+                message.style.transform = 'translate(-50%, -80%) scale(0.8)';
+            }, 1600);
+
+            setTimeout(() => {
+                window.location.href = "https://youtu.be/GIjt3QmIqjM?si=D4CtzqMY4YmOjHNM";
+            }, 2400);
+        }
+
+        // Función para el botón principal "Vamos a Japón"
+        function scrollToDestinos() {
+            document.getElementById('destinos').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
